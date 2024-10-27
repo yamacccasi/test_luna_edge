@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+.benefits {
+    width: 320px;
+    height: 200px;
+    margin-left: 32px;
+    font-family: 'Inter', sans-serif;
+}
+
+h3 {
+  font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: #4F637D;
+    margin-bottom: 16px;
+}
+
+
+h3::before {
+    content: '';
+    position: absolute;
+    left: -20px; /* Положение по горизонтали */
+    top: 4px; /* Положение по вертикали */
+    width: 5px; /* Ширина галочки */
+    height: 10px; /* Высота галочки */
+    border: solid #65BD47; /* Цвет галочки */
+    border-width: 0 1.29px 1.29px 0; /* Размеры бордера, чтобы сделать галочку */
+    transform: rotate(45deg); /* Поворот для создания формы галочки */
+    opacity: 1; /* Прозрачность галочки */
+}

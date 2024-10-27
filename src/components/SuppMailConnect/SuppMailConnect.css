@@ -1,0 +1,25 @@
+.btn_gmail {
+    width: 400px;
+    height: 50px;
+    background-color: #171717;
+    margin-top: 32px;
+    display: flex;
+}
+
+.mail_logo {
+    width: 48px;
+    height: inherit;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #5383EC;
+    border-radius: 2px;
+}
+
+button {
+    width: 352px;
+    height: inherit;
+    background-color: #5383EC;
+    color: #fff;
+}

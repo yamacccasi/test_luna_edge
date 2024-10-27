@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+
+.step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 48px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #5D7FA3;
+    position: relative;
+
+}
+
+.active {
+    color : #fff;
+}
+
+.step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 32px;
+    width: 2px;
+    height: 48px;
+    background-color: #5D7FA3;
+}
+
+.circle {
+    width: 32px;
+    height: 32px;
+    margin-right: 16px;
+    border: 2px solid #5D7FA3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active_circle {
+    border-color: #32ABF2;
+}
+
+.completed_circle {
+    background-color: #32ABF2;
+}
+
+.step.completed::after {
+    background-color: #32ABF2;
+}
+
+.line {
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+}
