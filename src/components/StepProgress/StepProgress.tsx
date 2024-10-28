@@ -12,7 +12,7 @@ const steps = [
     'Done'
 ];
 
-const StepProgress: React.FC<{ currentStep: number, setStep: AuthFormProps }> = ({ currentStep, setStep }) => {
+const StepProgress: React.FC<{ currentStep: number, setStep: AuthFormProps }> = ({ currentStep}) => {
 
     const renderSteps = () => {
         return steps.map((step, index) => {
