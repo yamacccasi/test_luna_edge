@@ -1,11 +1,9 @@
-/* Базовый стиль контейнера */
 .dropdown {
     position: relative;
     width: inherit;
     font-family: Arial, sans-serif;
 }
 
-/* Стили для метки */
 .dropdown-label {
     font-size: 14px;
     color: #4a5568;
@@ -13,7 +11,6 @@
     display: block;
 }
 
-/* Стили для заголовка (выбранный пункт) */
 .dropdown-header {
     display: flex;
     justify-content: space-between;
@@ -26,7 +23,6 @@
     color: #a0aec0;
 }
 
-/* Стили для раскрывающегося списка */
 .dropdown-list {
     position: absolute;
     width: 100%;
@@ -39,7 +35,6 @@
     overflow: hidden;
 }
 
-/* Стили для пунктов списка */
 .dropdown-item {
     padding: 10px 15px;
     cursor: pointer;
@@ -50,7 +45,6 @@
     background-color: #e2e8f0;
 }
 
-/* Стили для стрелки */
 .arrow {
     font-size: 12px;
     transition: transform 0.2s ease;
