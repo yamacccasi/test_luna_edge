@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
-
-
 button {
     font-family: 'Inter', sans-serif;
     width: 310px;
@@ -50,4 +48,9 @@ p {
     letter-spacing: -0.02em;
     text-align: center;
     color: #4F637D;
+    margin-bottom: 16px;
+}
+
+.img {
+    margin-top: 61px;
 }

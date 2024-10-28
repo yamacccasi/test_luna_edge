@@ -6,11 +6,9 @@ import {useRouter} from "next/navigation";
 import AuthFormProps from '../../interfaces/interface'
 
 
-
-const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
+const LoginForm: React.FC = ({setStep}: AuthFormProps) => {
 
     const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const router = useRouter();
@@ -46,14 +44,6 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
                                value={email}
                                onChange={(e) => setEmail(e.target.value)}
                         />
-                        <label htmlFor="name">Your Name</label>
-                        <input type="text"
-                               placeholder='Mega Chad'
-                               className='form_input'
-                               id='name'
-                               value={name}
-                               onChange={(e) => setName(e.target.value)}
-                        />
                         <label htmlFor="password">Password</label>
                         <input type="text"
                                placeholder='Enter Password'
@@ -62,9 +52,9 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
                                value={password}
                                onChange={(e) => setPassword(e.target.value)}
                         />
-                        <button type='submit' disabled={loading}>Create Account</button>
+                        <button type='submit' disabled={loading}>Login</button>
                     </form>
-                    <p className='link'>Already have an account? <a href="/login">Login</a></p>
+                    <p className='link'>Forgot Password? <a href="#">Reset</a></p>
                 </>}
 
             </div>
@@ -73,4 +63,4 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
 }
 
 
-export default AuthForm;
+export default LoginForm;

@@ -1,0 +1,61 @@
+/* Базовый стиль контейнера */
+.dropdown {
+    position: relative;
+    width: inherit;
+    font-family: Arial, sans-serif;
+}
+
+/* Стили для метки */
+.dropdown-label {
+    font-size: 14px;
+    color: #4a5568;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* Стили для заголовка (выбранный пункт) */
+.dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f7f9fc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #a0aec0;
+}
+
+/* Стили для раскрывающегося списка */
+.dropdown-list {
+    position: absolute;
+    width: 100%;
+    background-color: #f7f9fc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 4px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Стили для пунктов списка */
+.dropdown-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #2d3748;
+}
+
+.dropdown-item:hover {
+    background-color: #e2e8f0;
+}
+
+/* Стили для стрелки */
+.arrow {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.arrow.open {
+    transform: rotate(180deg);
+}

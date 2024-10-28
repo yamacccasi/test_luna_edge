@@ -11,7 +11,6 @@
     line-height: 24px;
     color: #5D7FA3;
     position: relative;
-
 }
 
 .active {
@@ -45,14 +44,48 @@
 
 .completed_circle {
     background-color: #32ABF2;
+    border-color: #32ABF2;
 }
 
-.step.completed::after {
-    background-color: #32ABF2;
+.connected_but_not_active {
+    background-color: #5D7FA3;
 }
 
-.line {
-    width: 20px;
-    height: 2px;
-    background-color: #fff;
+.step_title {
+    position: relative;
+}
+
+.step_completed::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #ffffff;
+    border-width: 0 1.29px 1.29px 0;
+    transform: rotate(45deg);
+    opacity: 1;
+}
+
+.routing_buttons {
+    width: 360px;
+    height: 33px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_active {
+    background-color: #134267;
+}
+
+.router_btn {
+    border-radius: 4px;
+    width: 84px;
+    height: inherit;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 21px;
+    color: #93ABC1;
 }
