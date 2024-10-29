@@ -1,22 +1,27 @@
 "use client"
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import Logo from '../../../public/Logo.svg'
 import './SuppMailConnect.css'
 import MailLogo from '../../../public/MailLogo.svg'
 import {useRouter} from "next/navigation";
+import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
+import {useStepContext} from "@/Context/StepContext";
 
-
-interface AuthFormProps {
-    setStep?: (value: (((prevState: number) => number) | number)) => void
-}
-
-const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
+const SuppMailConnect: React.FC = () => {
 
     const [loading, setLoading] = useState(false);
+    const {setStep} = useStepContext();
     const router = useRouter();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    useEffect(() => {
+        if(setStep) {
+            setStep(3)
+        }
+    }, [setStep])
+
+
+    const handleClick = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setTimeout(() => {
@@ -36,8 +41,8 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
                     <Image src={Logo} alt='Sorry'/>
                     <span>Chad</span>
                 </div>
-                {loading ? <h2>Wait a bit!</h2> : <>
-                    <form onSubmit={handleSubmit} className='form'>
+                {loading ? <LoadingIndicator/> : <>
+                    <div className='form'>
                         <h2>Connect your customer support email</h2>
                         <p>Allows Chad to send automated responses on your behalf from your usual support mailbox</p>
                         <div className='benefits'>
@@ -61,9 +66,9 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
                             <div className='mail_logo'>
                                 <Image src={MailLogo} alt='sorry'/>
                             </div>
-                            <button type='submit' disabled={loading}>Connect Gmail account</button>
+                            <button disabled={loading} onClick={handleClick}>Connect Gmail account</button>
                         </div>
-                    </form>
+                    </div>
                     <a href="/nogmail"><p className='link'>I don’t use Gmail</p></a>
                 </>}
             </div>
@@ -72,4 +77,4 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
     )
 }
 
-export default AuthForm;
+export default SuppMailConnect;

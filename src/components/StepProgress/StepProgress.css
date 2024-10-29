@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
-
 .step {
     display: flex;
     align-items: center;
@@ -27,6 +26,10 @@
     background-color: #5D7FA3;
 }
 
+.step.completed::after {
+    background-color: #32ABF2;
+}
+
 .circle {
     width: 32px;
     height: 32px;
@@ -47,8 +50,16 @@
     border-color: #32ABF2;
 }
 
-.connected_but_not_active {
-    background-color: #5D7FA3;
+.completed_circle::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #32ABF2;
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .step_title {

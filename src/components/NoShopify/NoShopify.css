@@ -3,3 +3,11 @@
     height: 519px;
 }
 
+h2 {
+    margin-top: 0px;
+    text-align: left;
+}
+
+p {
+    text-align: left;
+}

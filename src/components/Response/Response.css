@@ -41,6 +41,10 @@ a {
     align-items: center;
 }
 
+
+.ty {
+    text-align: center;
+}
 p {
     font-size: 14px;
     font-weight: 400;

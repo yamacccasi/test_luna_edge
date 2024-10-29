@@ -1,19 +1,25 @@
 "use client"
 import React, {useState} from "react";
+import Vision from '../../../public/VIsion.svg'
+import NoVision from "../../../public/NOVision.svg"
 import Image from "next/image";
 import Logo from '../../../public/Logo.svg'
 import {useRouter} from "next/navigation";
-import AuthFormProps from '../../interfaces/interface'
+import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
+import './AuthForm.css';
+import {useStepContext} from "@/Context/StepContext";
 
 
+const AuthForm: React.FC = () => {
 
-const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
-
+    const {setStep} = useStepContext();
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [visibility, setVisibility] = useState(false);
     const router = useRouter();
+
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -21,19 +27,24 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
         setTimeout(() => {
             setLoading(false);
             if(setStep) {
-                setStep(prevState => prevState + 1);
+                setStep(prevStep => prevStep + 1);
             }
             router.push('/shopify')
         }, 2000)
     }
+
+    // const getInputClass = (value) => {
+    //     return value.trim() === '' ? 'form_input input_error' : 'form_input';
+    // };
+
     return (
-        <div className='right_block'>
+        <section className='right_block'>
             <div className='form_wrapper'>
                 <div className='logo'>
                     <Image src={Logo} alt='Sorry'/>
                     <span>Chad</span>
                 </div>
-                {loading ? <h2>Wait a bit!</h2> : <>
+                {loading ? <LoadingIndicator/> : <>
                     <form onSubmit={handleSubmit} className='form'>
                         <h2>Welcome to Chad</h2>
                         <p>Go live in 10 minutes! Our self-service widget empowers your customers to manage orders and
@@ -55,20 +66,29 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
                                onChange={(e) => setName(e.target.value)}
                         />
                         <label htmlFor="password">Password</label>
-                        <input type="text"
-                               placeholder='Enter Password'
-                               className='form_input last'
-                               id='password'
-                               value={password}
-                               onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <div style={{position: 'relative', width: '100%'}}>
+                            <input
+                                type={visibility ? 'text' : 'password'}
+                                placeholder='Enter Password'
+                                className='form_input last show-password'
+                                id='password'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setVisibility(!visibility)}
+                                className="toggle_password"
+                            >
+                                {visibility ? <Image src={Vision} alt='sorry'/> : <Image src={NoVision} alt='sorry'/>}
+                            </button>
+                        </div>
                         <button type='submit' disabled={loading}>Create Account</button>
                     </form>
                     <p className='link'>Already have an account? <a href="/login">Login</a></p>
                 </>}
-
             </div>
-        </div>
+        </section>
     )
 }
 

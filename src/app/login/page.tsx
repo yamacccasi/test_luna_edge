@@ -9,7 +9,7 @@ function LoginPage() {
     return (
         <>
             <div className='wrapper'>
-                <StepProgress currentStep={step} isShopifyConnected={true}/>
+                <StepProgress currentStep={step}/>
                 <LoginForm setStep={setStep}/>
             </div>
         </>);

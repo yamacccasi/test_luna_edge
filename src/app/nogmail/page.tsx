@@ -1,7 +1,7 @@
 'use client'
 import StepProgress from "@/components/StepProgress/StepProgress";
 import {useState} from "react";
-import NoShopify from "@/components/NoShopify/NoShopify";
+import NoGmail from "@/components/NoGmail/NoGmail";
 
 function WelcomePage() {
 
@@ -10,7 +10,7 @@ function WelcomePage() {
         <>
             <div className='wrapper'>
                 <StepProgress currentStep={step}/>
-                <NoShopify setStep={setStep}/>
+                <NoGmail/>
             </div>
         </>);
 }

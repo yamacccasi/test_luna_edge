@@ -1,0 +1,32 @@
+.form_input.last.show-password {
+    position: relative;
+}
+.toggle_password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #4F637D;
+    font-size: 18px;
+}
+
+.form_input.input_error {
+    border: 1px solid red;
+    background-color: #ffe6e6;
+}
+
+.form_input:focus.input_error {
+    outline-color: red;
+}
+
+.form_input {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color:#030E16;
+}

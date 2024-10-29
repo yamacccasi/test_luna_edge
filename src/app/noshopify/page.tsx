@@ -9,8 +9,8 @@ function WelcomePage() {
     return (
         <>
             <div className='wrapper'>
-                <StepProgress currentStep={step}/>
-                <NoShopify setStep={setStep}/>
+                <StepProgress currentStep={step} setStep={setStep}/>
+                <NoShopify />
             </div>
         </>);
 }

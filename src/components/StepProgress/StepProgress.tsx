@@ -1,6 +1,6 @@
 import React from 'react';
 import './StepProgress.css';
-import AuthFormProps from '../../interfaces/interface'
+import {useStepContext} from "@/Context/StepContext";
 
 
 const steps = [
@@ -12,8 +12,9 @@ const steps = [
     'Done'
 ];
 
-const StepProgress: React.FC<{ currentStep: number, setStep: AuthFormProps }> = ({ currentStep}) => {
-
+const StepProgress: React.FC = () => {
+    // @ts-expect-error
+    const { step: currentStep, setStep} = useStepContext();
     const renderSteps = () => {
         return steps.map((step, index) => {
             const isIntermediate = step === 'Shopify Connected' || step === 'Email Connected';
@@ -55,17 +56,14 @@ const StepProgress: React.FC<{ currentStep: number, setStep: AuthFormProps }> = 
             isNextActive = ' router_btn'
         }
 
-
-        const handleClick = () => {
-        }
     return (
         <section className='left_block'>
             <div className='steps_wrapper'>
                 {renderSteps()}
             </div>
             <div className='routing_buttons'>
-                <button className={isBackActive} onClick={handleClick}>Back</button>
-                <button className={isNextActive}>Next</button>
+                <button className={isBackActive} onClick={() => setStep ? setStep(prevState => prevState - 1) :}>Back</button>
+                <button className={isNextActive} onClick={() => setStep ? setStep(prevState => prevState + 1) :}>Next</button>
             </div>
         </section>
     );

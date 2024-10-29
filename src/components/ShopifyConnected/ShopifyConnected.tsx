@@ -4,15 +4,12 @@ import Image from "next/image";
 import './ShopifyConnected.css'
 import ShopifyLogo from '../../../public/ShopifyLogo.svg'
 import {useRouter} from "next/navigation";
+import {useStepContext} from "@/Context/StepContext";
 
-
-interface AuthFormProps {
-    setStep?: (value: (((prevState: number) => number) | number)) => void
-}
-
-const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
+const AuthForm: React.FC = () => {
 
     const [loading, setLoading] = useState(false);
+    const {setStep} = useStepContext();
     const router = useRouter();
 
     const handleClick = (e: React.FormEvent) => {
@@ -27,11 +24,11 @@ const AuthForm: React.FC = ({setStep}: AuthFormProps) => {
     return (
         <div className='right_block'>
             <div className='form_wrapper'>
-                <div className='box'><Image src={ShopifyLogo} alt="sorry"/>
+                <div className='box'><Image src={ShopifyLogo} alt="sorry" className='connected_store'/>
                     <h2>Store connected</h2>
                     <p>Chad is now able to manage customer support requests for [STORE-NAME].</p>
                     <button type='submit' disabled={loading} onClick={handleClick}>Continue</button>
-                    <a href="/shopify"><p className='link'>Wrong store? Connect another one</p></a></div>
+                    <p className='link'>Wrong store? <a href="/shopify">Connect another one</a></p></div>
             </div>
         </div>
 

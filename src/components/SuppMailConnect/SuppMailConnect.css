@@ -2,7 +2,7 @@
     width: 400px;
     height: 50px;
     background-color: #171717;
-    margin-top: 32px;
+    margin-top: 50px;
     display: flex;
 }
 
@@ -39,7 +39,7 @@ button {
     height: inherit;
     background-color: #5383EC;
     color: #fff;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 
