@@ -1,8 +1,8 @@
 "use client"
 import React, {useState} from "react";
+import '../AuthForm/AuthForm.css'
 import Image from "next/image";
 import Logo from '../../../public/Logo.svg'
-import '../AuthForm/AuthForm.css'
 import {useRouter} from "next/navigation";
 import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
 import Vision from "../../../public/VIsion.svg";

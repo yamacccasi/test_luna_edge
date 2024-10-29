@@ -4,7 +4,7 @@ import React from "react";
 import './Response.css'
 import ResponseProps from '../../interfaces/interface'
 
-const Response: React.FC = ({router,}: ResponseProps) => {
+const Response: React.FC<ResponseProps> = ({router}) => {
     return (
         <div className='right_block'>
             <div className='form_wrapper'>
