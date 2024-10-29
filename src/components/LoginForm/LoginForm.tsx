@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../AuthForm/AuthForm.css'
 import Image from "next/image";
 import Logo from '../../../public/Logo.svg'
@@ -18,6 +18,12 @@ const LoginForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const [visibility, setVisibility] = useState(false);
+
+    useEffect(() => {
+        if(setStep) {
+            setStep(6)
+        }
+    })
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
-
-
 button {
     font-family: 'Inter', sans-serif;
     width: 310px;
@@ -49,4 +47,28 @@ p {
     letter-spacing: -0.02em;
     text-align: center;
     color: #4F637D;
+}
+
+.image_box {
+    position: relative;
+    display: inline-block;
+}
+
+.checkmark {
+    position: absolute;
+    top: -7px;
+    right: 1px;
+    width: 30px;
+    height: 30px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.checkmark::before {
+    content: '✔';
 }

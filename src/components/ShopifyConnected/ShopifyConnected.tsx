@@ -24,7 +24,11 @@ const AuthForm: React.FC = () => {
     return (
         <div className='right_block'>
             <div className='form_wrapper'>
-                <div className='box'><Image src={ShopifyLogo} alt="sorry" className='connected_store'/>
+                <div className='box'>
+                    <div className='image_box'>
+                    <Image src={ShopifyLogo} alt="sorry" className='connected_store'/>
+                    <div className="checkmark"></div>
+                    </div>
                     <h2>Store connected</h2>
                     <p>Chad is now able to manage customer support requests for [STORE-NAME].</p>
                     <button type='submit' disabled={loading} onClick={handleClick}>Continue</button>

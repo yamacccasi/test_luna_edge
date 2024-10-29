@@ -22,7 +22,8 @@
 .right_block {
   width: 872px;
   height: inherit;
-  background-image: url('../../public/surface1.svg');
+  background-image: url("/surface1.svg");
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
