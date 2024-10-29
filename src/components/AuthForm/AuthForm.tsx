@@ -1,7 +1,7 @@
 "use client"
 import React, {useState} from "react";
 import Vision from '../../../public/VIsion.svg'
-import NoVision from "../../../public/NOVision.svg"
+import noVision from "../../../public/noVision.svg"
 import Image from "next/image";
 import Logo from '../../../public/Logo.svg'
 import {useRouter} from "next/navigation";
@@ -80,7 +80,7 @@ const AuthForm: React.FC = () => {
                                 onClick={() => setVisibility(!visibility)}
                                 className="toggle_password"
                             >
-                                {visibility ? <Image src={Vision} alt='sorry'/> : <Image src={NoVision} alt='sorry'/>}
+                                {visibility ? <Image src={Vision} alt='sorry'/> : <Image src={noVision} alt='sorry'/>}
                             </button>
                         </div>
                         <button type='submit' disabled={loading}>Create Account</button>

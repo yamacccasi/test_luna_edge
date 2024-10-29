@@ -4,10 +4,9 @@ import Image from "next/image";
 import Logo from '../../../public/Logo.svg'
 import '../AuthForm/AuthForm.css'
 import {useRouter} from "next/navigation";
-import AuthFormProps from '../../interfaces/interface'
 import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
 import Vision from "../../../public/VIsion.svg";
-import NoVision from "../../../public/noVision.svg";
+import noVision from "../../../public/noVision.svg";
 import {useStepContext} from "@/Context/StepContext";
 
 
@@ -67,7 +66,7 @@ const LoginForm: React.FC = () => {
                                 onClick={() => setVisibility(!visibility)}
                                 className="toggle_password"
                             >
-                                {visibility ? <Image src={Vision} alt='sorry'/> : <Image src={NoVision} alt='sorry'/>}
+                                {visibility ? <Image src={Vision} alt='sorry'/> : <Image src={noVision} alt='sorry'/>}
                             </button>
                         </div>
                         <button type='submit' disabled={loading}>Login</button>

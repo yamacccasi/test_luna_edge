@@ -62,8 +62,8 @@ const StepProgress: React.FC = () => {
                 {renderSteps()}
             </div>
             <div className='routing_buttons'>
-                <button className={isBackActive} onClick={() => setStep ? setStep(prevState => prevState - 1) :}>Back</button>
-                <button className={isNextActive} onClick={() => setStep ? setStep(prevState => prevState + 1) :}>Next</button>
+                <button className={isBackActive} onClick={() => setStep ? setStep(prevState => prevState - 1) : null}>Back</button>
+                <button className={isNextActive} onClick={() => setStep ? setStep(prevState => prevState + 1) : null}>Next</button>
             </div>
         </section>
     );
