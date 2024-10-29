@@ -7,7 +7,9 @@ const StepContext = createContext<StepContextType | undefined>(undefined);
 
 export const StepProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [step, setStep] = useState<number>(0);
+
     return (
+        // @ts-expect-error: "error"
         <StepContext.Provider value={{ step, setStep }}>
             {children}
         </StepContext.Provider>

@@ -8,7 +8,3 @@ export default interface ResponseProps {
     router?: () => void
 }
 
-interface StepContextType {
-    currentStep: number;
-    setCurrentStep: (step: number) => void;
-}

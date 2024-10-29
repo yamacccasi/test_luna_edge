@@ -11,7 +11,6 @@ import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
 const ShopifyConnect: React.FC = () => {
 
     const [loading, setLoading] = useState(false);
-    // @ts-ignore
     const {setStep} = useStepContext();
     const router = useRouter();
 

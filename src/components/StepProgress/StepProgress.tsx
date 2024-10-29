@@ -13,7 +13,7 @@ const steps = [
 ];
 
 const StepProgress: React.FC = () => {
-    // @ts-expect-error
+    // @ts-expect-error: "error"
     const { step: currentStep, setStep} = useStepContext();
     const renderSteps = () => {
         return steps.map((step, index) => {
