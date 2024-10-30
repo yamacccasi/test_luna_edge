@@ -1,10 +1,13 @@
+import React, {type FC} from "react";
+
 import Image from "next/image";
 import Check from '../../../public/Check.svg'
-import React from "react";
-import './Response.css'
+
 import ResponseProps from '../../interfaces/interface'
 
-const Response: React.FC<ResponseProps> = ({router}) => {
+import './Response.css'
+
+const Response: FC<ResponseProps> = ({router}) => {
     return (
         <div className='right_block'>
             <div className='form_wrapper'>

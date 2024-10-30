@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import './DropDown.css';
 
 const Dropdown = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('Select platform');
 
     const options = ['Shopify', 'WooCommerce', 'Magento', 'BigCommerce'];
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('Select platform');
 
     const toggleDropdown = () => setIsOpen(!isOpen);
 

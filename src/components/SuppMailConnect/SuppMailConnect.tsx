@@ -1,34 +1,34 @@
 "use client"
-import React, {useState, useEffect} from "react";
-import Image from "next/image";
-import Logo from '../../../public/Logo.svg'
-import './SuppMailConnect.css'
-import MailLogo from '../../../public/MailLogo.svg'
+import React, {useState, useEffect, type FC} from "react";
 import {useRouter} from "next/navigation";
 import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
-import {useStepContext} from "@/Context/StepContext";
+import {useGlobalContext} from "@/Context/GlobalContext";
 
-const SuppMailConnect: React.FC = () => {
+import Image from "next/image";
+import Logo from '../../../public/Logo.svg'
+import MailLogo from '../../../public/MailLogo.svg'
 
-    const [loading, setLoading] = useState(false);
-    const {setStep} = useStepContext();
+import './SuppMailConnect.css'
+
+const LOGIN_STEP = 3;
+
+const SuppMailConnect: FC = () => {
+
+    const {store,setStore} = useGlobalContext();
     const router = useRouter();
 
-    useEffect(() => {
-        if(setStep) {
-            setStep(3)
-        }
-    }, [setStep])
+    const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        setStore(({...store, step: LOGIN_STEP}))
+    }, [setStore])
 
     const handleClick = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-            if (setStep) {
-                setStep(prevState => prevState + 1);
-            }
+                setStore(({...store,step: store.step + 1}))
             router.push('/login')
         }, 2000)
 
@@ -73,7 +73,6 @@ const SuppMailConnect: React.FC = () => {
                 </>}
             </div>
         </div>
-
     )
 }
 

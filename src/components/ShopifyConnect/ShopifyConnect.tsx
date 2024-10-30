@@ -1,33 +1,34 @@
 "use client"
-import React, {useState, useEffect} from "react";
-import Image from "next/image";
-import Logo from '../../../public/Logo.svg'
-import './ShopifyConnect.css'
+import React, {useState, useEffect, type FC} from "react";
 import {useRouter} from "next/navigation";
-import {useStepContext} from "@/Context/StepContext";
+import {useGlobalContext} from "@/Context/GlobalContext";
+
 import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
 
+import Image from "next/image";
+import Logo from '../../../public/Logo.svg'
 
-const ShopifyConnect: React.FC = () => {
+import './ShopifyConnect.css'
 
-    const [loading, setLoading] = useState(false);
-    const {setStep} = useStepContext();
+const LOGIN_STEP = 1;
+
+const ShopifyConnect: FC = () => {
+
+    const {store,setStore} = useGlobalContext();
     const router = useRouter();
 
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
-        if(setStep) {
-            setStep(1)
-        }
-    }, [setStep])
+        setStore(({...store, step: LOGIN_STEP}))
+    }, [setStore])
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setTimeout(() => {
-            setLoading(false);
-            if (setStep) {
-                setStep((prevState: number) => prevState + 1);
-            }
+                setLoading(false);
+                setStore(({...store, step: store.step + 1}))
             router.push('/shopifyconnected');
         }, 3000)
 
@@ -65,7 +66,6 @@ const ShopifyConnect: React.FC = () => {
                     <a href="/noshopify"><p className='link'>I don’t use Shopify</p></a></>}
             </div>
         </div>
-
     )
 }
 

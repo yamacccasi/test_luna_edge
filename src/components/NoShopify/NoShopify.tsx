@@ -1,35 +1,37 @@
 "use client"
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, type FC} from "react";
+import {useRouter} from "next/navigation";
+import {useGlobalContext} from "@/Context/GlobalContext";
+
 import Image from "next/image";
-import '../../app/globals.css'
-import './NoShopify.css'
 import Logo from "../../../public/Logo.svg";
+
 import Dropdown from "@/components/DropDown/DropDown";
 import Response from "@/components/Response/Response";
-import {useRouter} from "next/navigation";
 import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
-import {useStepContext} from "@/Context/StepContext";
 
-const NoShopify: React.FC = () => {
+import '../../app/globals.css'
+import './NoShopify.css'
+
+const LOGIN_STEP = 1;
+
+const NoShopify: FC = () => {
 
     const [loading, setLoading] = useState(false);
-    const {setStep} = useStepContext();
     const [platform,setPlatform] = useState(true);
+
+    const {store,setStore} = useGlobalContext()
     const router = useRouter();
 
     useEffect(() => {
-        if(setStep) {
-            setStep(1)
-        }
-    }, [setStep])
+            setStore(({...store, step: LOGIN_STEP}))
+    }, [setStore])
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setTimeout(() => {
-            if (setStep) {
-                setStep(prevState => prevState + 1);
-            }
+                setStore(({...store, step: store.step + 1}))
             setPlatform(false);
         },2000)
     }
@@ -51,13 +53,12 @@ const NoShopify: React.FC = () => {
                             <p>Chad Beta is currently only available on Shopify. We’ll send you an email when Chad becomes available on your platform.</p>
                             <label htmlFor="drop">Platform</label>
                             <Dropdown/>
-                            <button type='submit' onClick={handleSubmit} disabled={loading}>Submit</button>
+                            <button className='btn_shop' type='submit' onClick={handleSubmit} disabled={loading}>Submit</button>
                         </form>
                         <p className='link'>Actually use Shopify? <a href="/shopify">Connect</a></p>
                     </>}
                 </div>
-            </> : <Response router={Router}/>}
-
+            </> : <Response router={Router} setStep={setStore}/>}
         </div>
     )
 }

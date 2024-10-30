@@ -11,3 +11,16 @@ h2 {
 p {
     text-align: left;
 }
+
+.btn_shop {
+    font-family: 'Inter', sans-serif;
+    width: 310px;
+    height: 43px;
+    border-radius: 8px;
+    background-color: #32ABF2;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 25px;
+}

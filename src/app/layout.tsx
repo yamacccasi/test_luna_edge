@@ -1,15 +1,16 @@
 import React from "react";
 import "./globals.css";
-import {StepProvider} from "@/Context/StepContext"; // Импорт глобальных стилей
+import {GlobalProvider} from "@/Context/GlobalContext";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <StepProvider>
+        <GlobalProvider>
         <html lang="en">
         <body>
         {children}
         </body>
         </html>
-        </StepProvider>
+        </GlobalProvider>
+
     );
 }

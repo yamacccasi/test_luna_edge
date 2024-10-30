@@ -1,23 +1,24 @@
 "use client"
-import React, {useState} from "react";
-import Image from "next/image";
-import './ShopifyConnected.css'
-import ShopifyLogo from '../../../public/ShopifyLogo.svg'
+import React, {useState, type FC} from "react";
 import {useRouter} from "next/navigation";
-import {useStepContext} from "@/Context/StepContext";
+import {useGlobalContext} from "@/Context/GlobalContext";
 
-const AuthForm: React.FC = () => {
+import Image from "next/image";
+import ShopifyLogo from '../../../public/ShopifyLogo.svg'
+
+import './ShopifyConnected.css'
+
+const ShopifyConnected: FC = () => {
 
     const [loading, setLoading] = useState(false);
-    const {setStep} = useStepContext();
+
+    const {store,setStore} = useGlobalContext();
     const router = useRouter();
 
     const handleClick = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        if (setStep) {
-            setStep(prevState => prevState + 1);
-        }
+            setStore(({...store, step: store.step + 1}))
         router.push('/suppmail');
     }
 
@@ -35,8 +36,7 @@ const AuthForm: React.FC = () => {
                     <p className='link'>Wrong store? <a href="/shopify">Connect another one</a></p></div>
             </div>
         </div>
-
     )
 }
 
-export default AuthForm;
+export default ShopifyConnected;

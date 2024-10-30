@@ -1,36 +1,44 @@
 "use client"
-import React, {useState} from "react";
+import React, {useState, type FC } from "react";
+import {useRouter} from "next/navigation";
+import {useGlobalContext} from "@/Context/GlobalContext";
+import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
+
+import Image from "next/image";
+import Logo from "../../../public/Logo.svg"
 import Vision from '../../../public/VIsion.svg'
 import noVision from "../../../public/noVision.svg"
-import Image from "next/image";
-import Logo from '../../../public/Logo.svg'
-import {useRouter} from "next/navigation";
-import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
+
 import './AuthForm.css';
-import {useStepContext} from "@/Context/StepContext";
 
+const AuthForm: FC = () => {
 
-const AuthForm: React.FC = () => {
+    const {store,setStore} = useGlobalContext()
+    const [values,setValues] = useState({
+        email: '',
+        name: '',
+        password: ''
+    });
 
-    const {setStep} = useStepContext();
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
     const [visibility, setVisibility] = useState(false);
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
-
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        setTimeout(() => {
+            setTimeout(() => {
             setLoading(false);
-            if(setStep) {
-                setStep(prevStep => prevStep + 1);
-            }
+            setStore?.({
+                ...values,
+                step: store?.step ? store.step + 1 : 1
+            })
             router.push('/shopify')
         }, 2000)
+    }
+
+    const onChange = (id:string, value:string): void => {
+        setValues((prev) => ({...prev, [id]: value}))
     }
 
     // const getInputClass = (value) => {
@@ -44,7 +52,7 @@ const AuthForm: React.FC = () => {
                     <Image src={Logo} alt='Sorry'/>
                     <span>Chad</span>
                 </div>
-                {loading ? <LoadingIndicator/> : <>
+                    {loading ? <LoadingIndicator/> : <>
                     <form onSubmit={handleSubmit} className='form'>
                         <h2>Welcome to Chad</h2>
                         <p>Go live in 10 minutes! Our self-service widget empowers your customers to manage orders and
@@ -54,16 +62,16 @@ const AuthForm: React.FC = () => {
                                placeholder='megachad@gmail.com'
                                className='form_input'
                                id='email'
-                               value={email}
-                               onChange={(e) => setEmail(e.target.value)}
+                               value={values?.email ?? ''}
+                               onChange={({target}) => onChange(target.id, target.value)}
                         />
                         <label htmlFor="name">Your Name</label>
                         <input type="text"
                                placeholder='Mega Chad'
                                className='form_input'
                                id='name'
-                               value={name}
-                               onChange={(e) => setName(e.target.value)}
+                               value={values?.name ?? ''}
+                               onChange={({target}) => onChange(target.id, target.value)}
                         />
                         <label htmlFor="password">Password</label>
                         <div style={{position: 'relative', width: '100%'}}>
@@ -72,8 +80,8 @@ const AuthForm: React.FC = () => {
                                 placeholder='Enter Password'
                                 className='form_input last show-password'
                                 id='password'
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                value={values?.password ?? ''}
+                                onChange={({target}) => onChange(target.id, target.value)}
                             />
                             <button
                                 type="button"

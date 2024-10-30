@@ -1,42 +1,55 @@
 "use client"
 import React, {useEffect, useState} from "react";
+import {useGlobalContext} from "@/Context/GlobalContext";
+import {useRouter} from "next/navigation";
 import '../AuthForm/AuthForm.css'
 import Image from "next/image";
 import Logo from '../../../public/Logo.svg'
-import {useRouter} from "next/navigation";
+
 import LoadingIndicator from "@/components/LoadingIndicator/LoadingIndicator";
 import Vision from "../../../public/VIsion.svg";
 import noVision from "../../../public/noVision.svg";
-import {useStepContext} from "@/Context/StepContext";
 
+
+const LOGIN_STEP = 6;
 
 const LoginForm: React.FC = () => {
 
-    const [email, setEmail] = useState('');
-    const {setStep} = useStepContext();
-    const [password, setPassword] = useState('');
+    const {store,setStore} = useGlobalContext();
+    const [values,setValues] = useState({
+        email: '',
+        name: '',
+        password: ''
+    });
+
     const [loading, setLoading] = useState(false);
-    const router = useRouter();
     const [visibility, setVisibility] = useState(false);
 
+    const router = useRouter();
+
     useEffect(() => {
-        if(setStep) {
-            setStep(6)
-        }
-    })
+            setStore({
+                step: LOGIN_STEP
+            })
+    },[setStore])
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-            if(setStep) {
-                setStep(prevState => prevState + 1);
-            }
-            const username = encodeURIComponent(email.split('@')[0]);
-            router.push(`/helloluna?username=${username}`);
+            setStore?.({
+                ...values,
+                step: store?.step ? store.step + 1 : 1
+            })
+            router.push('/helloluna');
         }, 2000)
     }
+
+    const onChange = (id:string,value:string): void => {
+        setValues({...values, [id]: value})
+    }
+
     return (
         <div className='right_block'>
             <div className='form_wrapper'>
@@ -54,8 +67,8 @@ const LoginForm: React.FC = () => {
                                placeholder='megachad@gmail.com'
                                className='form_input'
                                id='email'
-                               value={email}
-                               onChange={(e) => setEmail(e.target.value)}
+                               value={values?.email ?? ''}
+                               onChange={({target}) => onChange(target.id, target.value)}
                         />
                         <label htmlFor="password">Password</label>
                         <div style={{position: 'relative', width: '100%'}}>
@@ -64,8 +77,8 @@ const LoginForm: React.FC = () => {
                                 placeholder='Enter Password'
                                 className='form_input last show-password'
                                 id='password'
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                value={values?.password ?? ''}
+                                onChange={({target}) => onChange(target.id, target.value)}
                             />
                             <button
                                 type="button"
